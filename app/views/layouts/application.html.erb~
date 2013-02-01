@@ -10,7 +10,7 @@
   <![endif]-->
 </head>
 <body>
-  <header class="navbar navbar-fixed-top">
+  <header> class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="cantainer">
         <%= link_to "sample app", '#', id: "logo" %>
