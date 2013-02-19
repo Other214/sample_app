@@ -107,7 +107,7 @@ footer {
   }  
 }
 
-<<<<<<< HEAD
+
 /* miscellaneous */
 
 .debug_dump {
@@ -155,7 +155,7 @@ input, textarea, select, .uneditable-input {
   height: auto;
   margin-bottom: 15px;
   @include box_sizing;
-=======
+
 / * forms */
 
 #error_explanation
@@ -169,7 +169,6 @@ input, textarea, select, .uneditable-input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
->>>>>>> 6552151217bc6e6f841057dfc15be7451bbaf62d
 }
 
 /*
