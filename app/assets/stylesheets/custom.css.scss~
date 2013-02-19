@@ -156,7 +156,6 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
   @include box_sizing;
 
-/ * forms */
 
 #error_explanation
   color: #f00;
