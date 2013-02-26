@@ -23,6 +23,11 @@ describe "Authentication" do
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
     end
  
+    describe "after visiting another page" do
+      before { click_link "Home" }
+      it { should_not have_selector('div.alert.alert-error') }
+    end
+
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
