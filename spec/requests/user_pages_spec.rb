@@ -109,6 +109,29 @@ describe "User pages" do
       specity { user.reload.name.should == new.name }
       specity { user.reload.email.should == new.email }
     end
-  end    
+     
+
+  describe "index" do
+    
+    let(:user) { FactoryGirl.create(:user) }
+
+    before(:each) do
+      sign_in user
+      visit users_path
+    end
+
+    it { should have_selector('title', text: "all users") }
+    it { should have_selector('hi', text: "all users") }
+    
+    describe "pagination" do
+      it { should have_selector('div.pagination') } 
+      
+      it "should list each user" do
+        User.paginate(page: 1).each do |user|
+          page.should have_selector('li', text: user.name)
+        end
+      end   
+    end
+  end
 
 end
