@@ -67,7 +67,7 @@ describe "User pages" do
     end
 
     describe "with invalid information" do
-      before ( click_button "Save changes" )
+      before { click_button "Save changes" }
 
       it { should have_content('error') }
     end
@@ -106,10 +106,10 @@ describe "User pages" do
       it { should have_selector('title', text: new_name) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('Sign out', href: signout_path) }
-      specity { user.reload.name.should == new.name }
-      specity { user.reload.email.should == new.email }
+      specify { user.reload.name.should == new.name }
+      specify { user.reload.email.should == new.email }
     end
-     
+  end   
 
   describe "index" do
     
@@ -132,6 +132,26 @@ describe "User pages" do
         end
       end   
     end
-  end
+
+    describe "delete links" do
+    
+      it { should_not have_link('delete') }
+
+      describe "as an admin user" do
+        let(:admin) { FactoryGirl.create(:admin) }
+	before do
+	  sign_in admin
+	  visit users_path
+	end
+	
+	it { should have_link('delete', href: user_path(User.first)) }
+	it "should be able to delete another user" do
+	  expect { click_link('delete') }.to change(User, :count).by(-1)
+	end 
+	it { should_not have_link('delete', href: user_path(admin)) }
+      end 	
+    end 	
+  end  
+  
 
 end
