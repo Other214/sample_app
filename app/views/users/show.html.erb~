@@ -3,10 +3,9 @@
   <aside class="span4">
     <section>
       <h1>
-        <%= raw gravatar_for @user %>	
+        <%= gravatar_for @user %>	
         <%= @user.name %>
       </h1>
     </section>
   </aside>
 </div>  
-#<%= @user.name %>,  <%= @user.email %>
